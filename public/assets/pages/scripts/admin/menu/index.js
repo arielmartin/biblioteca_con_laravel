@@ -2,7 +2,7 @@ $(document).ready(function () {
     $('#nestable').nestable().on('change', function () {
         const data = {
             menu: window.JSON.stringify($('#nestable').nestable('serialize')),
-            _token: $('input[name=_token]').val()
+            _token: $("input[name=_token]").val()
         };
         $.ajax({
             url: '/admin/menu/guardar-orden',
@@ -14,7 +14,7 @@ $(document).ready(function () {
         });
     });
 
-    $('.eliminar-menu').on('click', function(event){
+   /* $('.eliminar-menu').on('click', function(event){
         event.preventDefault();
         const url = $(this).attr('href');
         swal({
@@ -30,7 +30,7 @@ $(document).ready(function () {
                 window.location.href = url;
             }
         });
-    })
+    }) */
 
     $('#nestable').nestable('expandAll');
 });

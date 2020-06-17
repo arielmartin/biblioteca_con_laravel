@@ -28,7 +28,7 @@ Menú
                     </a>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="box-body">
                 @csrf
                 <div class="dd" id="nestable">
                     <ol class="dd-list">
