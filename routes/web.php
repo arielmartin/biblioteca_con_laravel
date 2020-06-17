@@ -32,4 +32,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
 
     Route::get('menu/{id}/editar', 'MenuController@editar')->name('editar_menu');
     Route::get('menu/{id}/eliminar', 'MenuController@eliminar')->name('eliminar_menu');
+
+    /*Rutas de ROL*/
+    Route::get('rol', 'RolController@index')->name('rol');
+    Route::get('rol/crear', 'RolController@crear')->name('crear_rol');
+    Route::post('rol', 'RolController@guardar')->name('guardar_rol');
+
 });
