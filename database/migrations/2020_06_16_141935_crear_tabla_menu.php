@@ -18,7 +18,7 @@ class CrearTablaMenu extends Migration
             $table->unsignedBigInteger('menu_id')->default(0);
             $table->string('nombre', 50);
             $table->string('url',100);
-            $table->unsignedInteger('order')->nullable();
+            $table->unsignedInteger('order')->default(0);
             $table->string('icono',50)->nullable();
             $table->timestamps();
         });
