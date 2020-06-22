@@ -33,8 +33,8 @@ class ValidacionMenu extends FormRequest
 
     public function messages()
     {
-        return[
-
+        return [
+            'nombre.required' => 'Ese nombre ya esta en uso',
         ];
     }
 }

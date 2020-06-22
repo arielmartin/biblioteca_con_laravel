@@ -4,7 +4,7 @@ Roles
 @endsection
 
 @section("scripts")
-<script src="{{asset("assets/pages/scripts/admin/crear.js")}}" type="text/javascript"></script>
+<script src="{{ asset("assets/js/index.js") }}" type="text/javascript"></script>
 @endsection
 
 @section('contenido')
@@ -31,14 +31,14 @@ Roles
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($datas as $item)
+                        @foreach ($datas as $data)
                             <tr>
-                                <td>{{$item->nombre}}</td>
+                                <td>{{$data->nombre}}</td>
                                 <td>
-                                    <a href="{{url("admin/rol/$item->id/editar")}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
+                                    <a href="{{route('editar_rol', ['id'=>$data->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
                                         <i class="fa fa-fw fa-pencil"></i>
                                     </a>
-                                    <form action="{{"admin/rol/$item->id"}}" class="d-inline form-eliminar" method="POST">
+                                    <form action="{{ route('eliminar_rol', ['id' => $data->id ]) }}" id="form" name="formdel" class="d-inline form-eliminar" method="POST">
                                         @csrf @method("delete")
                                         <button type="submit" class="btn-accion-tabla eliminar tooltipsC" title="Eliminar este registro">
                                             <i class="fa fa-fw fa-trash text-danger"></i>

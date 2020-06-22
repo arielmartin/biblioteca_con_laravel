@@ -61,7 +61,8 @@ class RolController extends Controller
      */
     public function editar($id)
     {
-        //
+        $data = Rol::findOrFail($id);
+        return view('admin.rol.editar', compact('data'));
     }
 
     /**
@@ -71,9 +72,10 @@ class RolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function actualizar(Request $request, $id)
+    public function actualizar(ValidacionRol $request, $id)
     {
-        //
+        Rol::findOrFail($id)->update($request->all() );
+        return redirect('admin/rol')->with('mensaje', 'Rol actualizado con exito');
     }
 
     /**
@@ -82,8 +84,29 @@ class RolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function eliminar($id)
-    {
-        //
+    public function eliminar(Request $request, $id)
+    { 
+        if ($request->ajax() ) {
+            
+            if (Rol::destroy($id)) {
+                return response()->json(['mensaje' => 'ok']);
+            } else {
+                return response()->json(['mensaje'=>'ng']);
+            }
+        } else {
+            abort(404);
+        }
+        /*
+        if ($request) {
+            
+            if (Rol::destroy($id)) {
+                return redirect('admin/rol')->with(['mensaje'=>'ok']);
+            } else {
+                return redirect('admin/rol')->with(['mensaje' => 'ng']);
+            }
+        } else {
+            abort(404);
+        }*/
+
     }
 }
